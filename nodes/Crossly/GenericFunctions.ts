@@ -39,7 +39,7 @@ export async function crosslyApiRequest(
 	body?: IDataObject,
 	qs?: IDataObject,
 	extraHeaders?: IDataObject,
-): Promise<any> {
+): Promise<IDataObject> {
 	const credentials = await this.getCredentials('crosslyApi');
 	const baseUrl = String(credentials.baseUrl || 'https://crossly.net/api').replace(/\/+$/, '');
 
@@ -54,7 +54,11 @@ export async function crosslyApiRequest(
 
 	for (let attempt = 0; ; attempt++) {
 		try {
-			return await this.helpers.httpRequestWithAuthentication.call(this, 'crosslyApi', options);
+			return (await this.helpers.httpRequestWithAuthentication.call(
+				this,
+				'crosslyApi',
+				options,
+			)) as IDataObject;
 		} catch (error) {
 			const response = (error as JsonObject).response as IDataObject | undefined;
 			const status = Number(

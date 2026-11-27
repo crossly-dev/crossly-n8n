@@ -276,7 +276,7 @@ const inventoryFields = (): INodeProperties[] => [
 	{ displayName: 'Brand', name: 'brand', type: 'string', default: '' },
 	{
 		displayName: 'Colors',
-		name: 'color',
+		name: 'colors',
 		type: 'string',
 		default: '',
 		description: 'Comma-separated colors, e.g. black, navy',
@@ -417,14 +417,6 @@ export const inventoryProperties: INodeProperties[] = [
 		...show('inventoryItem', ['getAll']),
 		options: [
 			{
-				displayName: 'Marketplace Names or IDs',
-				name: 'platforms',
-				type: 'multiOptions',
-				options: platformOptions,
-				default: [],
-				description: 'Items live on any of these marketplaces',
-			},
-			{
 				displayName: 'Marketplace Mode',
 				name: 'platformMode',
 				type: 'options',
@@ -434,6 +426,14 @@ export const inventoryProperties: INodeProperties[] = [
 				],
 				default: 'listed',
 				description: 'Not Listed inverts the marketplace filter: items live on none of them',
+			},
+			{
+				displayName: 'Marketplace Names or IDs',
+				name: 'platforms',
+				type: 'multiOptions',
+				options: platformOptions,
+				default: [],
+				description: 'Items live on any of these marketplaces',
 			},
 			{ displayName: 'SKU', name: 'sku', type: 'string', default: '', description: 'Exact SKU match' },
 			{

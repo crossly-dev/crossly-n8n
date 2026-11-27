@@ -112,7 +112,8 @@ export class CrosslyTrigger implements INodeType {
 				if (staticData.webhookId) {
 					try {
 						await crosslyApiRequest.call(this, 'DELETE', `/v1/webhooks/${encodeURIComponent(String(staticData.webhookId))}`);
-					} catch {
+					} catch (error) {
+						this.logger.warn(`Crossly Trigger: could not delete webhook ${String(staticData.webhookId)}: ${(error as Error).message}`);
 						return false;
 					}
 					delete staticData.webhookId;

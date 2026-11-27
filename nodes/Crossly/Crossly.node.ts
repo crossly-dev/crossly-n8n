@@ -5,7 +5,7 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 } from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
 import {
 	accountProperties,
@@ -24,12 +24,14 @@ import {
 	splitList,
 } from './GenericFunctions';
 
-const LIST_FIELDS = new Set(['images', 'color', 'tags']);
+const LIST_FIELDS = new Set(['images', 'colors', 'tags']);
+// n8n reserves the parameter name `color` for colour pickers; the API field is `color`.
+const RENAMED_FIELDS: Record<string, string> = { colors: 'color' };
 
 function toBody(fields: IDataObject): IDataObject {
 	const body: IDataObject = {};
 	for (const [key, value] of Object.entries(compact(fields))) {
-		body[key] = LIST_FIELDS.has(key) ? splitList(value) : value;
+		body[RENAMED_FIELDS[key] ?? key] = LIST_FIELDS.has(key) ? splitList(value) : value;
 	}
 	return body;
 }
@@ -242,7 +244,8 @@ export class Crossly implements INodeType {
 					returnData.push({ json: { error: (error as Error).message }, pairedItem: { item: i } });
 					continue;
 				}
-				throw error;
+				if (error instanceof NodeApiError || error instanceof NodeOperationError) throw error;
+				throw new NodeOperationError(this.getNode(), error as Error, { itemIndex: i });
 			}
 		}
 
