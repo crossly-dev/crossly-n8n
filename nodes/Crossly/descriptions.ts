@@ -275,11 +275,11 @@ export const listingProperties: INodeProperties[] = [
 const inventoryFields = (): INodeProperties[] => [
 	{ displayName: 'Brand', name: 'brand', type: 'string', default: '' },
 	{
-		displayName: 'Colours',
-		name: 'colours',
+		displayName: 'Colors',
+		name: 'shades',
 		type: 'string',
 		default: '',
-		description: 'Comma-separated colours, e.g. black, navy',
+		description: 'Comma-separated colors, e.g. black, navy',
 	},
 	{
 		displayName: 'Condition',

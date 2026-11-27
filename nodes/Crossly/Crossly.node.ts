@@ -24,9 +24,9 @@ import {
 	splitList,
 } from './GenericFunctions';
 
-const LIST_FIELDS = new Set(['images', 'colours', 'tags']);
-// n8n reserves parameters named like `color` for colour pickers; the API field is `color`.
-const RENAMED_FIELDS: Record<string, string> = { colours: 'color' };
+const LIST_FIELDS = new Set(['images', 'shades', 'tags']);
+// n8n reserves parameter names matching /colou?r/ for colour pickers; the API field is `color`.
+const RENAMED_FIELDS: Record<string, string> = { shades: 'color' };
 
 function toBody(fields: IDataObject): IDataObject {
 	const body: IDataObject = {};
