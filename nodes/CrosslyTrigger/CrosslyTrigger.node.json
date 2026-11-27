@@ -1,0 +1,21 @@
+{
+  "node": "n8n-nodes-crossly.crosslyTrigger",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Sales",
+    "Productivity"
+  ],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://crossly.net/docs/api-authentication"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://crossly.net/docs/api-webhooks"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "n8n-nodes-crossly",
+  "version": "0.1.0",
+  "description": "n8n community nodes for Crossly: crosspost listings, sync inventory, handle orders and offers, and trigger workflows on Crossly webhook events.",
+  "license": "MIT",
+  "homepage": "https://github.com/crossly-dev/crossly-n8n#readme",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "crossly",
+    "crosslisting",
+    "crossposting",
+    "reselling",
+    "ebay",
+    "poshmark",
+    "mercari",
+    "depop"
+  ],
+  "author": {
+    "name": "Crossly",
+    "email": "noreply@crossly.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crossly-dev/crossly-n8n.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crossly-dev/crossly-n8n/issues"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "node --test test/",
+    "release": "n8n-node release"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/CrosslyApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Crossly/Crossly.node.js",
+      "dist/nodes/CrosslyTrigger/CrosslyTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "*",
+    "eslint": "9.32.0",
+    "prettier": "3.6.2",
+    "release-it": "^19.0.4",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
