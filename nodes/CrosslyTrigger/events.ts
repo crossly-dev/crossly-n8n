@@ -75,7 +75,7 @@ export const crosslyEvents: INodePropertyOptions[] = [
 	{
 		name: 'Order Shipped',
 		value: 'order.shipped',
-		description: 'The order shipped: marked shipped, or the carrier\'s first in-network scan. Once per order',
+		description: 'The order shipped: marked shipped, or the carrier\'s first in-network scan. Once per order.',
 	},
 	{
 		name: 'Price Changed',
